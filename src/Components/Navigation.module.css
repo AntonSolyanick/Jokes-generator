@@ -1,0 +1,21 @@
+.transparent {
+  opacity: 0;
+  transition: 1s;
+  margin-right: 40px;
+  position: relative;
+  top: 12px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+  height: 70px;
+}
+
+.iconStorage {
+  position: static;
+  margin-right: 10px;
+  width: 60px;
+  height: auto;
+}

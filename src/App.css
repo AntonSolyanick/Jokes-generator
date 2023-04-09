@@ -1,38 +1,67 @@
-.App {
+@media (min-width: 370px) {
+}
+.app {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text {
+  font-family: "Indie Flower", cursive;
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.headerText {
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0;
+  margin-bottom: 35px;
+}
+.transparent {
+  opacity: 0;
+  margin-right: 20px;
+  transition: 500ms;
+  position: relative;
+  top: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.visible {
+  font-size: 18px;
+  opacity: 1;
+  transition: 500ms;
+  margin-right: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+/*---------------------- CSS Transition styles */
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-enter-active {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 500ms;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }
