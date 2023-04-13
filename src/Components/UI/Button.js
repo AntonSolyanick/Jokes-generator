@@ -10,6 +10,7 @@ function Button(props) {
   return (
     <>
       <button
+        title={props.title}
         className={styles.button}
         onClick={(e) => {
           props.onClick(e);

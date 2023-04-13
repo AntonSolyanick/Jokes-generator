@@ -11,19 +11,24 @@ function App() {
   const [nextJoke, setNextJoke] = useState(1);
   const [savedJokes, setSavedJokes] = useState([]);
   const [showStorage, setShowStorage] = useState(false);
-  //const [checkAddedJoke, setCheckAddedJoke] = useState(false);
   const transparentText = document.querySelector("#successfullySaved");
-  useEffect(() => checkLocalStorage, []);
-
-  //-------------------------FUNCTIONS------------------------------
-  function checkLocalStorage() {
+  useEffect(() => {
     const storage = localStorage.getItem("jokes");
     storage && setSavedJokes(JSON.parse(storage));
-  }
+  }, []);
 
+  useEffect(() => {
+    fetch("https://geek-jokes.sameerkumar.website/api?format=json")
+      .then((response) => response.json())
+      .then((object) => {
+        setJokeText(object.joke);
+      });
+  }, [nextJoke]);
+
+  //-------------------------FUNCTIONS------------------------------
   function setNextJokeHandler(e) {
     e.preventDefault();
-    setNextJoke(nextJoke + 1);
+    setNextJoke((prev) => prev + 1);
   }
 
   function deleteJokeHandler(id) {
@@ -47,7 +52,7 @@ function App() {
     if (!checkAddedJoke) {
       setSavedJokes([newJoke, ...savedJokes]);
       localStorage.setItem("jokes", JSON.stringify([newJoke, ...savedJokes]));
-      transparentText.textContent = `The joke saved  --->`;
+      transparentText.textContent = `The joke is saved  --->`;
     }
     if (checkAddedJoke) {
       transparentText.textContent = "It's already there --->";
@@ -76,23 +81,21 @@ function App() {
       <Navigation showStorageHandler={showStorageHandler} />
       <SwitchTransition>
         <CSSTransition key={showStorage} timeout={300} classNames="fade">
-          <>
+          <div className="displayBothComponents">
+            <JokeGeneratorContainer
+              jokeText={jokeText}
+              nextJoke={nextJoke}
+              setNextJokeHandler={setNextJokeHandler}
+              saveJokeHandler={saveJokeHandler}
+              showStorage={showStorage}
+            />
             <JokeList
               savedJokes={savedJokes}
               deleteJokeHandler={deleteJokeHandler}
               highlightJokeHandler={highlightJokeHandler}
               showStorage={showStorage}
             />
-
-            <JokeGeneratorContainer
-              jokeText={jokeText}
-              setJokeText={setJokeText}
-              nextJoke={nextJoke}
-              setNextJokeHandler={setNextJokeHandler}
-              saveJokeHandler={saveJokeHandler}
-              showStorage={showStorage}
-            />
-          </>
+          </div>
         </CSSTransition>
       </SwitchTransition>
     </>

@@ -22,6 +22,7 @@ function SavedJoke({
       <p className="text">{jokeText}</p>
       <div>
         <Button
+          title="Highlight joke"
           onClick={() => highlightJokeHandler(id)}
           className={styles.button}
         >
@@ -32,7 +33,11 @@ function SavedJoke({
           />
         </Button>
 
-        <Button onClick={() => deleteJokeHandler(id)} className={styles.button}>
+        <Button
+          title="Delete joke"
+          onClick={() => deleteJokeHandler(id)}
+          className={styles.button}
+        >
           <RiDeleteBin2Line
             className={`${styles.icon} ${
               isHighlighted ? styles.highlighted : undefined

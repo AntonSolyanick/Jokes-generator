@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(180deg, rgb(245, 164, 14) 30%, rgb(247, 194, 97));
+  background: linear-gradient(180deg, rgb(245, 164, 14) 75%, rgb(240, 27, 27));
   background-size: contain;
   min-height: 100%;
   background-repeat: no-repeat;
@@ -19,4 +19,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button {
+  cursor: pointer;
 }

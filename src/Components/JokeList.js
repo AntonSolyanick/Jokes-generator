@@ -12,13 +12,17 @@ function JokeList({
   return (
     <TransitionGroup
       component="ul"
-      className={showStorage ? styles.list : styles.displayJokeList}
+      className={`${styles.jokeListContainer} ${
+        showStorage ? styles.list : styles.hideJokeList
+      }`}
     >
       <CSSTransition classNames="item" timeout={300}>
         <>
           <p className="headerText"> Saved Jokes</p>
           {savedJokes.length < 1 ? (
-            <p>You don't have any saved jokes yet</p>
+            <p className={styles.regularText}>
+              You don't have any saved jokes yet
+            </p>
           ) : (
             savedJokes.map((joke) => (
               <SavedJoke

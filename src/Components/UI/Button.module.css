@@ -7,6 +7,13 @@
   background: none;
   border: none;
   margin-top: 20px;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+@media (min-width: 769px) {
+  .button {
+    margin-right: 75px;
+    margin-left: 75px;
+  }
 }
